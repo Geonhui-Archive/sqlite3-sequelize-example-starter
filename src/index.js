@@ -10,7 +10,7 @@ var bodyParser = require("body-parser");
 app.use(express.static("public"));
 
 // Initial set of users to populate the database with
-var defaultUsers = ["KINGO Girl", "Kingo Guy"];
+var defaultUsers = ["KINGO Girl", "KINGO Guy"];
 var users = defaultUsers.slice();
 
 // Use bodyParser to parse application/x-www-form-urlencoded form data
