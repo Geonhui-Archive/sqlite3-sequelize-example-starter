@@ -1,3 +1,5 @@
+const path = require('path');
+
 // init project
 var express = require("express");
 var Sequelize = require("sequelize");
@@ -8,7 +10,7 @@ var bodyParser = require("body-parser");
 app.use(express.static("public"));
 
 // Initial set of users to populate the database with
-var defaultUsers = ["Brad Pitt", "Ed Norton", "Denzel Washington"];
+var defaultUsers = ["KINGO Girl", "Kingo Guy"];
 var users = defaultUsers.slice();
 
 // Use bodyParser to parse application/x-www-form-urlencoded form data
@@ -30,7 +32,8 @@ var sequelize = new Sequelize(
     },
     // Data is stored in the file `database.sqlite` in the folder `db`.
     // To prevent the database being copied on fork the db folder has been added to a .gitignore file
-    storage: "/sandbox/src/db/database.sqlite"
+    //storage: "/sandbox/src/db/database.sqlite"
+    storage: path.resolve(__dirname, "db/database.sqlite")
   }
 );
 
@@ -86,7 +89,8 @@ app.get("/reset", function(request, response) {
 
 // Serve the root url: http://expressjs.com/en/starter/basic-routing.html
 app.get("/", function(request, response) {
-  response.sendFile("/sandbox/views/index.html");
+  //response.sendFile("/sandbox/views/index.html");
+  response.sendFile( path.resolve(__dirname, "../views/index.html") );
 });
 
 // Listen on port 8080
